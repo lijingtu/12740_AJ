@@ -104,9 +104,11 @@ When a beam of IR light is emitted by a source, the light does not “disperse�
 </p>
 
 ### Signal processing and conditioning ###
-The PIR sensor was able to detect any objects passing by with temperature different from its ambient environment, generally, this will lead to noises and errors. Instead of condition signal after collection, a “proactive” measure was adopted to adjust delay time and sensing range before data collection. However, time delay would not be considered in the 
-For PIR signal conditioning, there have been some online resources showing that for some PIR sensors, there will be both DC voltage output and AC output. [3] While the former one will affect the signal desired and perform as noise, and the later one could be too small and should be amplified by some built-in architectural design. However, after calibration and test, we decided that noise and errors are rare in PIR motion sensor output, with binary discrete signals capturing adjacent motion when placing near the door. Thus, no further conditioning nor averaging was applied on PIR motion sensor.
-For CO2 sensor, signal output will be processed with mathematical equation and will read as indoor CO2 concentration in “ppm”. For 1s sampling rate, since CO2 generation is a non-periodic continuous process, there should be no aliasing caused. However, according to Guillaume [4], the usual fluctuation of CO2 concentration variation should not be of concern in occupancy detection. To eliminate the effects from variations, we applied moving average with window length of for the collected CO2 concentration.
+The PIR sensor was able to detect any objects passing by with temperature different from its ambient environment, generally, this will lead to noises and errors. Instead of condition signal after collection, a “proactive” measure was adopted to adjust delay time and sensing range before data collection. However, time delay would not be considered in data analysis.
+
+There have been some online resources showing the necessity for eliminating DC voltage output as noise and amplify the AC output. [3]  However, after calibration and test, we decided such conditioning could be omitted for the PIR sensor used.  Also, we applied moving average with window length of 3 to prioritize the consecutive "True" binary discrete signals as a way balancing eleminating false positive errors and unintentionally filtering out true positive signals.
+
+For CO2 sensor, signal output will be processed with mathematical equation and will read as indoor CO2 concentration in “ppm”. For the 1s sampling rate, since CO2 generation is a non-periodic continuous process, there should be no aliasing caused. However, according to Guillaume [4], the usual fluctuation of CO2 concentration variation should not be of concern in occupancy detection. To eliminate the effects from variations, we applied moving average also with window length of 3 for the collected CO2 concentration data.
 
 ## Experiments and Results ##
 ### Experiments ###
@@ -191,6 +193,21 @@ The code regarding to estimation is shown as in Figure 15.
 
 ## IoT application with Open Chirp ##
 We also encourage the use of online resources displaying real-time CO2 concentration. Though the daily baseline concentration changes with ventilation rate, there are still two extreme cases that are easily observable from Open Chirp. One is the extreme low CO2 reading at 400-500 ppm which suggests an empty room. Another one is extreme high CO2 concentration more than 850 ppm which usually suggests a full name. It has been observed, however, that at weekday afternoon with weak ventilation, room with only 3 people could also have that high level. But if the room has that high level concentration, it will not be suggested to stay in anyway.
+
+
+### Open Chirp: [link](https://openchirp.io/home/device/5da25be6466cc60c381e0c97#visualization) 
+
+## Discusion ##
+1. The schedule of ventilation rate, which determines CO2 concentration balance,has an unknown schedule. After analyzing data collected from Sunday to Wednesday, we decided the concentration for the same number of occupants could vary for weekdays and weekend. Since we don’t have control over the ventilation system of the test room, nor even knowing its schedule, it could be hard to have a uniform regression model applicable for every day. Our solution to this phenomenon has been using a daily measured “base” level concentration as the indication of daily ventilation rate and determines the number of occupants by change rate of CO2 concentration, as introduced in the last section.
+
+2. The activity level of students in the test room will influence the amount of CO2 discharged by students. It has been observed that CO2 concentration level for occupants doing manufacturing work, or being actively discussing homework, would be rather different from that in a quiet study room. In final application GUI design, we only use the model trained with quiet studying students. If having chances to further improve the project, this will be one of our targets.
+
+3. The fluctuation of slope in short period of time will influence the accuracy of the estimation. When students leave the room, the slope of regression line is approximately proportional to the number of students only in short period of time, while the slope converges to -0.15 in long period of time. In order to reduce the error rate, we use the relative short time period to compute the trend of CO2 concentration. However, the influence from fluctuation of slope increases as the duration of time period decreases.
+
+4. Indoor air movement will influence the CO2 reading, so it’s important to put CO2 sensor at the place with minor air movement.
+
+5. The delay in response of CO2 sensor makes it impossible to make real-time estimation.
+
 
 ### Progress Report: [link](old.html)
 
