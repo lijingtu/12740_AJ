@@ -4,7 +4,7 @@ Tiancheng Zhao, Hongrui Yu, Mingyang Cong, Lijing Tu
 Video link:[link](https://vimeo.com/366579518)
 
 ## Introduction ##
-This project is a pilot study of school studying space occupancy management system. It aims to detect the occupancy condition is a confined space. There are 2 parallel sensing systems were applied in this project. First, CO2  sensor is used to detect the indoor CO2 concentration. Because CO2 sensor always affected by time delay, PIR sensor and manual peopel counting were applied as a validation method. The second sensing system (PIR ) detects the instance occupancy movement.
+This project is a pilot study of school studying space occupancy management system. It aims to detect the occupancy condition is a confined space. There are 2 parallel sensing systems were applied in this project. First, CO2  sensor is used to detect the indoor CO2 concentration. Because CO2 sensor always affected by time delay, PIR sensor and manual peopel counting were applied as a validation method. The second sensing system (PIR) detects the instance occupancy movement.
 ## Motivation ##
 School library and department lounges are always packed with students. However, the seats are limited. Everyone has the experience that spend a lot of time in finding seats but still need to study at home. At that time, it would be great to have someone or something to tell us where we can find an available seat. This project is aiming to solve this problem using sensor to detect the occupancy condition and return the result to the user.
 ## Goals ##
@@ -57,7 +57,7 @@ Weight: 6g [5]
 #### Applicability ####
 This sensor could be used for outdoor lights, lift lobby and common staircases. Also, it could be used in shopping mall or used as garden lights.
 #### Signal characteristics ####
-When the sensor is triggered by person moving, there will be a 5V output being received by Raspberry Pi which gets high level voltage, then return “1”. When there is no detection of the body motion, Raspberry Pi GPIO output get low level voltage, then return “0”. However, there is still time delay which begins when motion is first detected, and the time delay will be reset by each detected motion. The Figure 2 shows the signal sketch for the PIR motion sensor.
+When the sensor is triggered by person moving, there will be a 5V output being received by Raspberry Pi which gets high level voltage, then return “1”. When there is no detection of the body motion, Raspberry Pi GPIO output get low level voltage, then return “0”. However, there is still time delay which begins when motion is first detected, and the time delay will be reset by each detected motion. The Figure 1 shows the signal sketch for the PIR motion sensor.
 ![link](2.png)
 <p align="center">
   <b>Figure 1 Signal sketch for the PIR motion sensor </b>
@@ -128,13 +128,13 @@ Firstly, we focus on identifying the pattern of PIR reading. As shown in Figure 
   <b>Figure 4 PIR reading and number of students </b>
 </p>
 
-Secondly, we focus on identifying the pattern of CO2 concentration. As shown in Figure 6, the change in CO2 concentration is tightly related to the change in number of students. At first, when there are 5 students in the test room, even the CO2 concentration fluctuates, but the average during that time period is maintained at 650 ppm. When students start to leave the room one by one, the decrease in CO2 concentration is approximately linearly related to the number of students leave the test room. When all students leave the room, the CO2 concentration fluctuates around 450 ppm. After a while, when 5 students enter the room together, the increase in CO2 concentration is approximately linearly related to the number of students enter the test room. According to this, we assume that the change in CO2 concentration is linearly related to the change in number of students, and decide to use linear regression to identify their relationship. Therefore, we control the number of students enter and leave the test room to discover the pattern of CO2 concentration.
+Secondly, we focus on identifying the pattern of CO2 concentration. As shown in Figure 5, the change in CO2 concentration is tightly related to the change in number of students. At first, when there are 5 students in the test room, even the CO2 concentration fluctuates, but the average during that time period is maintained at 650 ppm. When students start to leave the room one by one, the decrease in CO2 concentration is approximately linearly related to the number of students leave the test room. When all students leave the room, the CO2 concentration fluctuates around 450 ppm. After a while, when 5 students enter the room together, the increase in CO2 concentration is approximately linearly related to the number of students enter the test room. According to this, we assume that the change in CO2 concentration is linearly related to the change in number of students, and decide to use linear regression to identify their relationship. Therefore, we control the number of students enter and leave the test room to discover the pattern of CO2 concentration.
 ![link](6.png)
 <p align="center">
   <b>Figure 5 CO2 level and number of students </b>
 </p>
 
-After conducting linear regression on data regarding to different number of students entering the test room, we find that when students enter the room, the slope of regression line is approximately proportional related to the number of students, and the coefficient is somewhere between 0.14 and 0.15. As shown in Figure 7, the slope of regression line is 0.4305 when there are 3 students. As shown in Figure 8, the slope of regression line is 0.7118 when there are 5 students.
+After conducting linear regression on data regarding to different number of students entering the test room, we find that when students enter the room, the slope of regression line is approximately proportional related to the number of students, and the coefficient is somewhere between 0.14 and 0.15. As shown in Figure 6, the slope of regression line is 0.4305 when there are 3 students. As shown in Figure 7, the slope of regression line is 0.7118 when there are 5 students.
 ![link](7.png)
 <p align="center">
   <b>Figure 6  CO2 level change when 3 students enter the room </b>
@@ -146,7 +146,7 @@ After conducting linear regression on data regarding to different number of stud
 </p>
 Then, we conduct linear regression on data regarding to different number of students leaving the test room. The result is confusing because in the short period of time (about 3 minutes), the slope of regression line is approximately proportional related to the number of students, while in the long period of time, the slope of regression line is somewhere near -0.15.
 
-As shown in Figure 9, 10 and 11, the slope of regression line in short period of time is -0.148 for 1 student, -0.2817 for 2 students and -0.452 for 3 students. The coefficient is somewhere between -0.14 and -0.15, though the confidence level is not high enough to achieve a solid conclusion.
+As shown in Figure 8, 9 and 10, the slope of regression line in short period of time is -0.148 for 1 student, -0.2817 for 2 students and -0.452 for 3 students. The coefficient is somewhere between -0.14 and -0.15, though the confidence level is not high enough to achieve a solid conclusion.
 ![link](9.png)
 <p align="center">
   <b>Figure 8  Slope in short period of time (1 student) </b>
@@ -162,7 +162,7 @@ As shown in Figure 9, 10 and 11, the slope of regression line in short period of
   <b>Figure 10  Slope in short period of time (3 student) </b>
 </p>
 
-However, for long period of time, even the confidence level is very high, the slope of regression line is close to -0.145 regardless of the number of students. As shown in Figure 12, 13 and 14.
+However, for long period of time, even the confidence level is very high, the slope of regression line is close to -0.145 regardless of the number of students. As shown in Figure 11, 12 and 13.
 ![link](12.png)
 <p align="center">
   <b>Figure 11  Slope in long period of time (1 student) </b>
@@ -182,7 +182,7 @@ This causes some trouble in estimating the number of students in the test room, 
 Thirdly, aside from identifying the trend of CO2 concentration, we also need to define a baseline, which is the current CO2 concentration, to estimate the number of students. Unfortunately, as we don’t have control over the ventilation system in the test room, the baseline varies every day. However, the contribution to CO2 concentration for each student is similar and each students can contribute 80 ppm after CO2 concentration stabilizes. Thus, we can measure the CO2 concentration every morning and set value from that measurement as the baseline.
 
 Finally, we get the estimation function: Estimation = Base + Trend. We use 60 data points (3 minutes from now) to do linear regression to find the trend of current CO2 level. As in short period of time, the CO2 fluctuation can be large, in order to reduce error rate, we use the mean of two consecutive categories as boundary to distinguish two categories.
-The code regarding to estimation is shown as in Figure 15. 
+The code regarding to estimation is shown as in Figure 14. 
 
 ![link](15.png)
 <p align="center">
