@@ -21,6 +21,7 @@ In our case, when someone enters or exits the room, since it firstly went within
 <p align="center">
   <b>Figure 1-1 Human radiation in infrared [2] </b>
 </p>
+
 #### Static and Dynamic behavior ####
 For human radiation detection, since human body temperature is always much above indoor environment temperature, even if body temperature changes with time, the fluctuations will not affect motion detection results, and therefore this phenomenon will be regarded as static. However, the dynamic characteristic of CO2 accumulation has been crucial in this project. It is just because of the change of accumulated CO2 level with time and differences of accumulation rate with various occupancy status that leads to the measuring the correlation between co2 concentration and occupancy number. 
 #### Signal characteristics ####
