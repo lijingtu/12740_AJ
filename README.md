@@ -163,6 +163,7 @@ However, for long period of time, even the confidence level is very high, the sl
 <p align="center">
   <b>Figure 12  Slope in long period of time (1 student) </b>
 </p>
+
 ![link](13.png)
 <p align="center">
   <b>Figure 13  Slope in long period of time (2 students) </b>
