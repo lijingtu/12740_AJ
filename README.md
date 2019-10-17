@@ -138,6 +138,7 @@ After conducting linear regression on data regarding to different number of stud
 <p align="center">
   <b>Figure 7  CO2 level change when 3 students enter the room </b>
 </p>
+
 ![link](8.png)
 <p align="center">
   <b>Figure 8  CO2 level change when 5 students enter the room </b>
@@ -149,10 +150,12 @@ As shown in Figure 9, 10 and 11, the slope of regression line in short period of
 <p align="center">
   <b>Figure 9  Slope in short period of time (1 student) </b>
 </p>
+
 ![link](10.png)
 <p align="center">
   <b>Figure 10  Slope in short period of time (2 students) </b>
 </p>
+
 ![link](11.png)
 <p align="center">
   <b>Figure 11  Slope in short period of time (3 student) </b>
@@ -184,7 +187,7 @@ The code regarding to estimation is shown as in Figure 15.
   <b>Figure 15  Estimation logic </b>
 </p>
 
-[link](old.html)
+Progress Report: [link](old.html)
 
 
 Reference:
