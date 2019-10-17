@@ -27,10 +27,10 @@ As for numerical characteristic of PIR sensor, since there are only two output �
 ## Sensor(s) Used ##
 ### Passive infrared sensor (PIR Motion sensor) ###
 #### Physical principles ####
-The PIR motion sensor we selected is HC-SR501 infrared sensor which allows us to sense motion. Human bodies generate infrared heat which could be picked up by the PIR motion sensor. This sensor is made of a pyroelectric sensor which detects the level of infrared radiation, and a multifaceted lens (a Fresnel lens) which can enlarge the useful detection angle by improving the visibility of the smaller cones and decreasing the visibility of the intervening areas. 
+The PIR motion sensor we selected is HC-SR501 infrared sensor which allows us to sense motion. Human bodies generate infrared heat which could be picked up by the PIR motion sensor. This sensor is made of a pyroelectric sensor which detects the level of infrared radiation, and a multifaceted lens (a Fresnel lens) which can enlarge the useful detection angle by improving the visibility of the smaller cones and decreasing the visibility of the intervening areas. [5]
 #### Static and dynamic behavior ####
 The maximum and minimum value of the physical variable that can be measured is from 4.5V to 20V and the output is 0V in low situation and 3.3V in high situation. The sensitivity ranges from 5s to 5 minutes.
-Our sensor is an active sensor, in dynamic condition, as soon as the sensor detects a person’s moving, it outputs a 5V signal to the Raspberry Pi. And in static condition, when there is no person or person’s moving, the output is 0V.
+Our sensor is an active sensor, in dynamic condition, as soon as the sensor detects a person’s moving, it outputs a 5V signal to the Raspberry Pi. And in static condition, when there is no person or person’s moving, the output is 0V.[5]
 #### Sensor characteristics ####
 Working voltage: 4.5V to 20V
 
@@ -48,7 +48,7 @@ Operating Temperature: -20 – +80 Degrees C.
 
 PCB Dimensions: 33x25mm, 14mm High not including the Lens; Lens: 11mm high, 23mmDiameter.
 
-Weight: 6g
+Weight: 6g [5]
 #### Applicability ####
 This sensor could be used for outdoor lights, lift lobby and common staircases. Also, it could be used in shopping mall or used as garden lights.
 #### Signal characteristics ####
@@ -62,17 +62,28 @@ The detection range of the sensor is from 0 to 5000 ppm with a 0.4 to 2V linear 
 The sensor response to the variable input is an excellent linear output when the input signals are constant with temperature compensation, that is, the higher the input, the higher the output voltage.
 #### Sensor characteristics ####
 Working voltage 4.5 V ~ 5.5V 
+
 DC Average current < 85 mA 
+
 Interface level 3.3 V 
+
 Measuring range 0~5%VOL optional 
+
 Output signal PWM UART 0.4-2V DC 
+
 Preheat time 3min 
+
 Response Time < 90s 
+
 Working temperature 0℃ ~ 50℃ 
+
 Working humidity 0~95%RH 
+
 Weight 15 g 
+
 Lifespan >5 year 
-Dimension 57.5×34.7×16mm（L×W×H）
+
+Dimension 57.5×34.7×16mm（L×W×H）[6]
 #### Applicability ####
 This sensor can be used for HVAC refrigeration equipment, fresh air system, air quality monitoring equipment, smart home, and schools.
 #### Signal characteristics ####
@@ -122,3 +133,5 @@ Reference:
 [2] https://www.agcled.com/blog/the-best-high-bay-light-with-pir-sensor.html
 [3] Ansanay-Alex, G. (2013). Estimating occupancy using indoor carbon dioxide concentrations only in an office building: a method and qualitative assessment. 11th REHVA World Congr. Energy Eff., Smart Healthy Build.
 [4] https://www.st.com/content/ccc/resource/technical/document/application_note/b8/84/29/41/21/00/44/41/DM00096551.pdf/files/DM00096551.pdf/jcr:content/translations/en.DM00096551.pdf
+[5]http://kookye.com/2018/11/06/arduino-lesson-pir-motion-sensor/
+[6] https://www.winsen-sensor.com/d/files/infrared-gas-sensor/mh-z14a_co2-manual-v1_01.pdf
