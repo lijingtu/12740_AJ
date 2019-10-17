@@ -120,27 +120,74 @@ The maximum occupancy was set at five people. Then we used our equipment to dete
 We repeated the same experimental steps for three days, more than 10 hours each day, and effectively predicted the number of people in the room based on the data we have obtained.
 ### Data Analysis ###
 After we collect the data, we process the data before we analysis it. We use the moving average to process the CO2 concentration data to reduce the influence of noise during the measurement. The size of moving window is 5 data points. For the data from PIR and Ground-truth (actual number of students during the measurement), we don’t need to process them. As PIR generate binary data (0 or 1), there is no need to process it. While Ground-truth is the actual number of students during the measurement, we cannot process it because it is the data we refer to when we try to identify the pattern of CO2 level and PIR reading.
-Firstly, we focus on identifying the pattern of PIR reading. As shown in figure 1-1, PIR reading doesn’t match the ground-truth. Even though the PIR can record the time when people enter and leave the room, but there is also much noise that prevent us from tracking the right number of students in the test room. Besides, the PIR can only detect the motion instead of the direction of movement, it cannot tell us whether students are entering or leaving the room. Thus, we decide not to use PIR reading as an indicator.
-Figure here
-Secondly, we focus on identifying the pattern of CO2 concentration. As shown in figure 1-2, the change in CO2 concentration is tightly related to the change in number of students. At first, when there are 5 students in the test room, even the CO2 concentration fluctuates, but the average during that time period is maintained at 650 ppm. When students start to leave the room one by one, the decrease in CO2 concentration is approximately linearly related to the number of students leave the test room. When all students leave the room, the CO2 concentration fluctuates around 450 ppm. After a while, when 5 students enter the room together, the increase in CO2 concentration is approximately linearly related to the number of students enter the test room. According to this, we assume that the change in CO2 concentration is linearly related to the change in number of students, and decide to use linear regression to identify their relationship. Therefore, we control the number of students enter and leave the test room to discover the pattern of CO2 concentration.
-Figure here
-After conducting linear regression on data regarding to different number of students entering the test room, we find that when students enter the room, the slope of regression line is approximately proportional related to the number of students, and the coefficient is somewhere between 0.14 and 0.15. As shown in figure 1-3, the slope of regression line is 0.4305 when there are 3 students. As shown in figure 1-4, the slope of regression line is 0.7118 when there are 5 students.
-Figure here
-Figure here
+
+Firstly, we focus on identifying the pattern of PIR reading. As shown in Figure 5, PIR reading doesn’t match the ground-truth. Even though the PIR can record the time when people enter and leave the room, but there is also much noise that prevent us from tracking the right number of students in the test room. Besides, the PIR can only detect the motion instead of the direction of movement, it cannot tell us whether students are entering or leaving the room. Thus, we decide not to use PIR reading as an indicator.
+![link](5.png)
+<p align="center">
+  <b>Figure 5 PIR reading and number of students </b>
+</p>
+
+Secondly, we focus on identifying the pattern of CO2 concentration. As shown in Figure 6, the change in CO2 concentration is tightly related to the change in number of students. At first, when there are 5 students in the test room, even the CO2 concentration fluctuates, but the average during that time period is maintained at 650 ppm. When students start to leave the room one by one, the decrease in CO2 concentration is approximately linearly related to the number of students leave the test room. When all students leave the room, the CO2 concentration fluctuates around 450 ppm. After a while, when 5 students enter the room together, the increase in CO2 concentration is approximately linearly related to the number of students enter the test room. According to this, we assume that the change in CO2 concentration is linearly related to the change in number of students, and decide to use linear regression to identify their relationship. Therefore, we control the number of students enter and leave the test room to discover the pattern of CO2 concentration.
+![link](6.png)
+<p align="center">
+  <b>Figure 6 CO2 level and number of students </b>
+</p>
+
+After conducting linear regression on data regarding to different number of students entering the test room, we find that when students enter the room, the slope of regression line is approximately proportional related to the number of students, and the coefficient is somewhere between 0.14 and 0.15. As shown in Figure 7, the slope of regression line is 0.4305 when there are 3 students. As shown in Figure 8, the slope of regression line is 0.7118 when there are 5 students.
+![link](7.png)
+<p align="center">
+  <b>Figure 7  CO2 level change when 3 students enter the room </b>
+</p>
+
+![link](8.png)
+<p align="center">
+  <b>Figure 8  CO2 level change when 5 students enter the room </b>
+</p>
 Then, we conduct linear regression on data regarding to different number of students leaving the test room. The result is confusing because in the short period of time (about 3 minutes), the slope of regression line is approximately proportional related to the number of students, while in the long period of time, the slope of regression line is somewhere near -0.15.
-As shown in figure 1-5, 1-6 and 1-7, the slope of regression line in short period of time is -0.148 for 1 student, -0.2817 for 2 students and -0.452 for 3 students. The coefficient is somewhere between -0.14 and -0.15, though the confidence level is not high enough to achieve a solid conclusion.
-Figure here
-Figure here
-Figure here
-Figure here
-Figure here
-Figure here
-However, for long period of time, even the confidence level is very high, the slope of regression line is close to -0.145 regardless of the number of students. As shown in figure 1-8, 1-9 and 1-10.
+
+As shown in Figure 9, 10 and 11, the slope of regression line in short period of time is -0.148 for 1 student, -0.2817 for 2 students and -0.452 for 3 students. The coefficient is somewhere between -0.14 and -0.15, though the confidence level is not high enough to achieve a solid conclusion.
+![link](9.png)
+<p align="center">
+  <b>Figure 9  Slope in short period of time (1 student) </b>
+</p>
+
+![link](10.png)
+<p align="center">
+  <b>Figure 10  Slope in short period of time (2 students) </b>
+</p>
+
+![link](11.png)
+<p align="center">
+  <b>Figure 11  Slope in short period of time (3 student) </b>
+</p>
+
+However, for long period of time, even the confidence level is very high, the slope of regression line is close to -0.145 regardless of the number of students. As shown in Figure 12, 13 and 14.
+
+![link](12.png)
+<p align="center">
+  <b>Figure 12  Slope in long period of time (1 student) </b>
+</p>
+
+![link](13.png)
+<p align="center">
+  <b>Figure 13  Slope in long period of time (2 students) </b>
+</p>
+
+![link](14.png)
+<p align="center">
+  <b>Figure 14  Slope in long period of time (3 student) </b>
+</p>
 This causes some trouble in estimating the number of students in the test room, as the linear relationship no longer exists when time period is too long, while the CO2 concentration fluctuates and error rate increases when time period is too short. 
+
 Thirdly, aside from identifying the trend of CO2 concentration, we also need to define a baseline, which is the current CO2 concentration, to estimate the number of students. Unfortunately, as we don’t have control over the ventilation system in the test room, the baseline varies every day. However, the contribution to CO2 concentration for each student is similar and each students can contribute 80 ppm after CO2 concentration stabilizes. Thus, we can measure the CO2 concentration every morning and set value from that measurement as the baseline.
+
 Finally, we get the estimation function: Estimation = Base + Trend. We use 60 data points (3 minutes from now) to do linear regression to find the trend of current CO2 level. As in short period of time, the CO2 fluctuation can be large, in order to reduce error rate, we use the mean of two consecutive categories as boundary to distinguish two categories.
-The code regarding to estimation is shown as in figure 1-11. 
-Figure here
+The code regarding to estimation is shown as in Figure 15. 
+
+![link](15.png)
+<p align="center">
+  <b>Figure 15  Estimation logic </b>
+</p>
 
 [link](old.html)
 
