@@ -4,7 +4,7 @@ Tiancheng Zhao, Hongrui Yu, Mingyang Cong, Lijing Tu
 Video link:[link](https://vimeo.com/366579518)
 
 ## Introduction ##
-This project is a pilot study of school studying space occupancy management system. It aims to detect the occupancy condition is a confined space. There are 2 parallel sensing systems were applied in this project. First, CO2  sensor is used to detect the indoor CO2 concentration. Because CO2 sensor always affected by time delay, PIR sensor and air pressure were applied as a validation method. The second sensing system (PIR ) detects the instance occupancy movement. A website were created to display the occupancy condition. If the space is fully occupied, it also allows users to submit their email to receive notification when space is available.
+This project is a pilot study of school studying space occupancy management system. It aims to detect the occupancy condition is a confined space. There are 2 parallel sensing systems were applied in this project. First, CO2  sensor is used to detect the indoor CO2 concentration. Because CO2 sensor always affected by time delay, PIR sensor and manual peopel counting were applied as a validation method. The second sensing system (PIR ) detects the instance occupancy movement.
 ## Motivation ##
 School library and department lounges are always packed with students. However, the seats are limited. Everyone has the experience that spend a lot of time in finding seats but still need to study at home. At that time, it would be great to have someone or something to tell us where we can find an available seat. This project is aiming to solve this problem using sensor to detect the occupancy condition and return the result to the user.
 ## Goals ##
