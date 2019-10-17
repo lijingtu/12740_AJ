@@ -1,5 +1,6 @@
 # Seats Available, Come Study Here! #
 Tiancheng Zhao, Hongrui Yu, Mingyang Cong, Lijing Tu
+
 Video link:[link](https://vimeo.com/366579518)
 
 ## Introduction ##
@@ -32,13 +33,21 @@ The maximum and minimum value of the physical variable that can be measured is f
 Our sensor is an active sensor, in dynamic condition, as soon as the sensor detects a person’s moving, it outputs a 5V signal to the Raspberry Pi. And in static condition, when there is no person or person’s moving, the output is 0V.
 #### Sensor characteristics ####
 Working voltage: 4.5V to 20V
+
 Output: High: 3.3V, Low: 0V
+
 Detection angle: Approximately 120 degrees
+
 Range: Adjustable, up to 7m
+
 Trigger modes: L unrepeatable trigger / H repeatable trigger (default)
+
 Dwell time: (Stay-ON time) adjustable between 5-300 Seconds. –– it can be further increased by increasing the value of the CY1-Timing capacitor on pin 4 of the IC
+
 Operating Temperature: -20 – +80 Degrees C.
+
 PCB Dimensions: 33x25mm, 14mm High not including the Lens; Lens: 11mm high, 23mmDiameter.
+
 Weight: 6g
 #### Applicability ####
 This sensor could be used for outdoor lights, lift lobby and common staircases. Also, it could be used in shopping mall or used as garden lights.
