@@ -182,12 +182,13 @@ Thirdly, aside from identifying the trend of CO2 concentration, we also need to 
 
 Finally, we get the estimation function: Estimation = Base + Trend. We use 60 data points (3 minutes from now) to do linear regression to find the trend of current CO2 level. As in short period of time, the CO2 fluctuation can be large, in order to reduce error rate, we use the mean of two consecutive categories as boundary to distinguish two categories.
 The code regarding to estimation is shown as in Figure 15. 
+
 ![link](15.png)
 <p align="center">
   <b>Figure 15  Estimation logic </b>
 </p>
 
-### Progress Report: ### [link](old.html)
+### Progress Report: [link](old.html)
 
 
 Reference:
