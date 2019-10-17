@@ -19,7 +19,7 @@ Human consumes energy and generate heat, with radiating waves came at around 12 
 In our case, when someone enters or exits the room, since it firstly went within sensor detection range and then left this range, motion of this infrared radiation source will be detected and recorded as number of occupants change. Connection between this phenomenon and sensor will be illustrated in “Sensors Used” section.
 ![link](1.jpg)
 <p align="center">
-  <b>Figure 1-1 Human radiation in infrared [2] </b>
+  <b>Figure 1 Human radiation in infrared [2] </b>
 </p>
 
 #### Static and Dynamic behavior ####
@@ -57,8 +57,12 @@ Weight: 6g [5]
 #### Applicability ####
 This sensor could be used for outdoor lights, lift lobby and common staircases. Also, it could be used in shopping mall or used as garden lights.
 #### Signal characteristics ####
-When the sensor is triggered by person moving, there will be a 5V output being received by Raspberry Pi which gets high level voltage, then return “1”. When there is no detection of the body motion, Raspberry Pi GPIO output get low level voltage, then return “0”. However, there is still time delay which begins when motion is first detected, and the time delay will be reset by each detected motion. The Figure (???) shows the signal sketch for the PIR motion sensor.
-Figure here
+When the sensor is triggered by person moving, there will be a 5V output being received by Raspberry Pi which gets high level voltage, then return “1”. When there is no detection of the body motion, Raspberry Pi GPIO output get low level voltage, then return “0”. However, there is still time delay which begins when motion is first detected, and the time delay will be reset by each detected motion. The Figure 2 shows the signal sketch for the PIR motion sensor.
+![link](2.png)
+<p align="center">
+  <b>Figure 2 Signal sketch for the PIR motion sensor </b>
+</p>
+
 ### Nondispersive Infrared (NDIR) CO2 Sensor ###
 #### Physical principles ####
 “Nondispersive infrared” is an industry term which used to detect carbon dioxide (CO2). An infrared (IR) lamp directs light waves through a tube containing an air sample to a filter in front of the IR light detector. The IR light passes through the optical filter is measured by the IR light detector. Then the difference is attained which is the result of the light being absorbed by the CO2 molecules in the air inside the tube.
@@ -93,7 +97,11 @@ Dimension 57.5×34.7×16mm（L×W×H）[6]
 This sensor can be used for HVAC refrigeration equipment, fresh air system, air quality monitoring equipment, smart home, and schools.
 #### Signal characteristics ####
 When a beam of IR light is emitted by a source, the light does not “disperse” by substances between the light and a detector. If there are gases in the path, the light will be absorbed by the gases. As a result, the constant air input induces the constant linear output.
-Figure here
+![link](3.png)
+<p align="center">
+  <b>Figure 3 The visualization of CO2 sensor signal </b>
+</p>
+
 ### Signal processing and conditioning ###
 The PIR sensor was able to detect any objects passing by with temperature different from its ambient environment, generally, this will lead to noises and errors. Instead of condition signal after collection, a “proactive” measure was adopted to adjust delay time and sensing range before data collection. However, time delay would not be considered in the 
 For PIR signal conditioning, there have been some online resources showing that for some PIR sensors, there will be both DC voltage output and AC output. [3] While the former one will affect the signal desired and perform as noise, and the later one could be too small and should be amplified by some built-in architectural design. However, after calibration and test, we decided that noise and errors are rare in PIR motion sensor output, with binary discrete signals capturing adjacent motion when placing near the door. Thus, no further conditioning nor averaging was applied on PIR motion sensor.
