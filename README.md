@@ -124,7 +124,7 @@ After we collect the data, we process the data before we analysis it. We use the
 Firstly, we focus on identifying the pattern of PIR reading. As shown in Figure 5, PIR reading doesn’t match the ground-truth. Even though the PIR can record the time when people enter and leave the room, but there is also much noise that prevent us from tracking the right number of students in the test room. Besides, the PIR can only detect the motion instead of the direction of movement, it cannot tell us whether students are entering or leaving the room. Thus, we decide not to use PIR reading as an indicator.
 
 <p align="center">
-  <![link](5.png)>
+  <b> ![link](5.png) </b>
   <b>Figure 5 PIR reading and number of students </b>
 </p>
 
