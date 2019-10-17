@@ -17,7 +17,7 @@ As human activity consumes energy and emit carbon dioxide, when the emission rat
 #### Human Motion ####
 Human consumes energy and generate heat, with radiating waves came at around 12 microns.[1] Since it falls within the range of 0.75 to 1000 micron of infrared radiation, human body could be seen as an infrared radiation source. Therefore, when someone moves around in a space, there should also be an infrared radiation moving in the space. Such phenomenon lays the ground for PIR motion sensor design.
 In our case, when someone enters or exits the room, since it firstly went within sensor detection range and then left this range, motion of this infrared radiation source will be detected and recorded as number of occupants change. Connection between this phenomenon and sensor will be illustrated in “Sensors Used” section.
-[link] (1.jpg)
+![link] (1.jpg)
 #### Static and Dynamic behavior ####
 For human radiation detection, since human body temperature is always much above indoor environment temperature, even if body temperature changes with time, the fluctuations will not affect motion detection results, and therefore this phenomenon will be regarded as static. However, the dynamic characteristic of CO2 accumulation has been crucial in this project. It is just because of the change of accumulated CO2 level with time and differences of accumulation rate with various occupancy status that leads to the measuring the correlation between co2 concentration and occupancy number. 
 #### Signal characteristics ####
@@ -131,8 +131,13 @@ Figure here
 
 Reference:
 [1] https://www.hko.gov.hk/education/edu02rga/radiation/radiation_02-e.htm
+
 [2] https://www.agcled.com/blog/the-best-high-bay-light-with-pir-sensor.html
+
 [3] Ansanay-Alex, G. (2013). Estimating occupancy using indoor carbon dioxide concentrations only in an office building: a method and qualitative assessment. 11th REHVA World Congr. Energy Eff., Smart Healthy Build.
+
 [4] https://www.st.com/content/ccc/resource/technical/document/application_note/b8/84/29/41/21/00/44/41/DM00096551.pdf/files/DM00096551.pdf/jcr:content/translations/en.DM00096551.pdf
+
 [5]http://kookye.com/2018/11/06/arduino-lesson-pir-motion-sensor/
+
 [6] https://www.winsen-sensor.com/d/files/infrared-gas-sensor/mh-z14a_co2-manual-v1_01.pdf
