@@ -188,6 +188,10 @@ The code regarding to estimation is shown as in Figure 15.
   <b>Figure 15  Estimation logic </b>
 </p>
 
+
+## IoT application with Open Chirp ##
+We also encourage the use of online resources displaying real-time CO2 concentration. Though the daily baseline concentration changes with ventilation rate, there are still two extreme cases that are easily observable from Open Chirp. One is the extreme low CO2 reading at 400-500 ppm which suggests an empty room. Another one is extreme high CO2 concentration more than 850 ppm which usually suggests a full name. It has been observed, however, that at weekday afternoon with weak ventilation, room with only 3 people could also have that high level. But if the room has that high level concentration, it will not be suggested to stay in anyway.
+
 ### Progress Report: [link](old.html)
 
 
