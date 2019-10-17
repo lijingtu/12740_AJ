@@ -18,10 +18,6 @@ As human activity consumes energy and emit carbon dioxide, when the emission rat
 Human consumes energy and generate heat, with radiating waves came at around 12 microns.[1] Since it falls within the range of 0.75 to 1000 micron of infrared radiation, human body could be seen as an infrared radiation source. Therefore, when someone moves around in a space, there should also be an infrared radiation moving in the space. Such phenomenon lays the ground for PIR motion sensor design.
 In our case, when someone enters or exits the room, since it firstly went within sensor detection range and then left this range, motion of this infrared radiation source will be detected and recorded as number of occupants change. Connection between this phenomenon and sensor will be illustrated in “Sensors Used” section.
 
-![minipic](1.jpg)
-<p align="center">
-  <b>Figure 1 Human radiation in infrared [2] </b>
-</p>
 
 #### Static and Dynamic behavior ####
 For human radiation detection, since human body temperature is always much above indoor environment temperature, even if body temperature changes with time, the fluctuations will not affect motion detection results, and therefore this phenomenon will be regarded as static. However, the dynamic characteristic of CO2 accumulation has been crucial in this project. It is just because of the change of accumulated CO2 level with time and differences of accumulation rate with various occupancy status that leads to the measuring the correlation between co2 concentration and occupancy number. 
@@ -61,7 +57,7 @@ This sensor could be used for outdoor lights, lift lobby and common staircases. 
 When the sensor is triggered by person moving, there will be a 5V output being received by Raspberry Pi which gets high level voltage, then return “1”. When there is no detection of the body motion, Raspberry Pi GPIO output get low level voltage, then return “0”. However, there is still time delay which begins when motion is first detected, and the time delay will be reset by each detected motion. The Figure 2 shows the signal sketch for the PIR motion sensor.
 ![link](2.png)
 <p align="center">
-  <b>Figure 2 Signal sketch for the PIR motion sensor </b>
+  <b>Figure 1 Signal sketch for the PIR motion sensor </b>
 </p>
 
 ### Nondispersive Infrared (NDIR) CO2 Sensor ###
@@ -100,7 +96,7 @@ This sensor can be used for HVAC refrigeration equipment, fresh air system, air 
 When a beam of IR light is emitted by a source, the light does not “disperse” by substances between the light and a detector. If there are gases in the path, the light will be absorbed by the gases. As a result, the constant air input induces the constant linear output.
 ![link](3.png)
 <p align="center">
-  <b>Figure 3 The visualization of CO2 sensor signal </b>
+  <b>Figure 2 The visualization of CO2 sensor signal </b>
 </p>
 
 ### Signal processing and conditioning ###
@@ -115,7 +111,7 @@ For CO2 sensor, signal output will be processed with mathematical equation and w
 We used the inner room of CEE Graduate Suite (Wean Hall 3503) as the test field which has a ventilation and a relatively small volume. Then, we put our PIR sensor towards the door. When there is someone coming in or going out the room, the PIR sensor will detect the motion and be triggered. In order to avoid the impact of opening or closing the door on the concentration of CO2, the NDIR CO2 sensor was placed far away from the door with some shelters. 
 ![link](4.png)
 <p align="center">
-  <b>Figure 4 Experiment Circuit </b>
+  <b>Figure 3 Experiment Circuit </b>
 </p>
 
 The maximum occupancy was set at five people. Then we used our equipment to detect the relationship between the indoor carbon dioxide changes and the number of people. The number of people was set to increase from one person to five persons with the growing mode is entering one person, two persons or three persons. And the departure mode is the same as the enter mode, until no one is in the room. We also designed a manual counting as the ground truth to check our results.
@@ -126,57 +122,57 @@ After we collect the data, we process the data before we analysis it. We use the
 Firstly, we focus on identifying the pattern of PIR reading. As shown in Figure 5, PIR reading doesn’t match the ground-truth. Even though the PIR can record the time when people enter and leave the room, but there is also much noise that prevent us from tracking the right number of students in the test room. Besides, the PIR can only detect the motion instead of the direction of movement, it cannot tell us whether students are entering or leaving the room. Thus, we decide not to use PIR reading as an indicator.
 ![link](5.png)
 <p align="center">
-  <b>Figure 5 PIR reading and number of students </b>
+  <b>Figure 4 PIR reading and number of students </b>
 </p>
 
 Secondly, we focus on identifying the pattern of CO2 concentration. As shown in Figure 6, the change in CO2 concentration is tightly related to the change in number of students. At first, when there are 5 students in the test room, even the CO2 concentration fluctuates, but the average during that time period is maintained at 650 ppm. When students start to leave the room one by one, the decrease in CO2 concentration is approximately linearly related to the number of students leave the test room. When all students leave the room, the CO2 concentration fluctuates around 450 ppm. After a while, when 5 students enter the room together, the increase in CO2 concentration is approximately linearly related to the number of students enter the test room. According to this, we assume that the change in CO2 concentration is linearly related to the change in number of students, and decide to use linear regression to identify their relationship. Therefore, we control the number of students enter and leave the test room to discover the pattern of CO2 concentration.
 ![link](6.png)
 <p align="center">
-  <b>Figure 6 CO2 level and number of students </b>
+  <b>Figure 5 CO2 level and number of students </b>
 </p>
 
 After conducting linear regression on data regarding to different number of students entering the test room, we find that when students enter the room, the slope of regression line is approximately proportional related to the number of students, and the coefficient is somewhere between 0.14 and 0.15. As shown in Figure 7, the slope of regression line is 0.4305 when there are 3 students. As shown in Figure 8, the slope of regression line is 0.7118 when there are 5 students.
 ![link](7.png)
 <p align="center">
-  <b>Figure 7  CO2 level change when 3 students enter the room </b>
+  <b>Figure 6  CO2 level change when 3 students enter the room </b>
 </p>
 
 ![link](8.png)
 <p align="center">
-  <b>Figure 8  CO2 level change when 5 students enter the room </b>
+  <b>Figure 7  CO2 level change when 5 students enter the room </b>
 </p>
 Then, we conduct linear regression on data regarding to different number of students leaving the test room. The result is confusing because in the short period of time (about 3 minutes), the slope of regression line is approximately proportional related to the number of students, while in the long period of time, the slope of regression line is somewhere near -0.15.
 
 As shown in Figure 9, 10 and 11, the slope of regression line in short period of time is -0.148 for 1 student, -0.2817 for 2 students and -0.452 for 3 students. The coefficient is somewhere between -0.14 and -0.15, though the confidence level is not high enough to achieve a solid conclusion.
 ![link](9.png)
 <p align="center">
-  <b>Figure 9  Slope in short period of time (1 student) </b>
+  <b>Figure 8  Slope in short period of time (1 student) </b>
 </p>
 
 ![link](10.png)
 <p align="center">
-  <b>Figure 10  Slope in short period of time (2 students) </b>
+  <b>Figure 9  Slope in short period of time (2 students) </b>
 </p>
 
 ![link](11.png)
 <p align="center">
-  <b>Figure 11  Slope in short period of time (3 student) </b>
+  <b>Figure 10  Slope in short period of time (3 student) </b>
 </p>
 
 However, for long period of time, even the confidence level is very high, the slope of regression line is close to -0.145 regardless of the number of students. As shown in Figure 12, 13 and 14.
 ![link](12.png)
 <p align="center">
-  <b>Figure 12  Slope in long period of time (1 student) </b>
+  <b>Figure 11  Slope in long period of time (1 student) </b>
 </p>
 
 ![link](13.png)
 <p align="center">
-  <b>Figure 13  Slope in long period of time (2 students) </b>
+  <b>Figure 12  Slope in long period of time (2 students) </b>
 </p>
 
 ![link](14.png)
 <p align="center">
-  <b>Figure 14  Slope in long period of time (3 student) </b>
+  <b>Figure 13  Slope in long period of time (3 student) </b>
 </p>
 This causes some trouble in estimating the number of students in the test room, as the linear relationship no longer exists when time period is too long, while the CO2 concentration fluctuates and error rate increases when time period is too short. 
 
@@ -187,7 +183,7 @@ The code regarding to estimation is shown as in Figure 15.
 
 ![link](15.png)
 <p align="center">
-  <b>Figure 15  Estimation logic </b>
+  <b>Figure 14  Estimation logic </b>
 </p>
 
 
