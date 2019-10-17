@@ -8,7 +8,7 @@ This project is a pilot study of school studying space occupancy management syst
 ## Motivation ##
 School library and department lounges are always packed with students. However, the seats are limited. Everyone has the experience that spend a lot of time in finding seats but still need to study at home. At that time, it would be great to have someone or something to tell us where we can find an available seat. This project is aiming to solve this problem using sensor to detect the occupancy condition and return the result to the user.
 ## Goals ##
-The ultimate goal is to record the number of people studying in the library, and then upload this information to the website. When students visit our website, they can know not only whether there are seats available but also how many seats are available. And if seats are not available, so long as students subscribe our website, they can receive email notifications when seats are available.
+The ultimate goal is to record the number of people studying in the library, train a model for predicting number of occupants and develop GUI for information sharing. When students run our GUI, they can know not only whether there are seats available but also how many seats are available. 
 
 ## Methodology ##
 ### Phenomena of Interest ###
