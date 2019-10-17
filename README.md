@@ -122,23 +122,21 @@ We repeated the same experimental steps for three days, more than 10 hours each 
 After we collect the data, we process the data before we analysis it. We use the moving average to process the CO2 concentration data to reduce the influence of noise during the measurement. The size of moving window is 5 data points. For the data from PIR and Ground-truth (actual number of students during the measurement), we don’t need to process them. As PIR generate binary data (0 or 1), there is no need to process it. While Ground-truth is the actual number of students during the measurement, we cannot process it because it is the data we refer to when we try to identify the pattern of CO2 level and PIR reading.
 
 Firstly, we focus on identifying the pattern of PIR reading. As shown in Figure 5, PIR reading doesn’t match the ground-truth. Even though the PIR can record the time when people enter and leave the room, but there is also much noise that prevent us from tracking the right number of students in the test room. Besides, the PIR can only detect the motion instead of the direction of movement, it cannot tell us whether students are entering or leaving the room. Thus, we decide not to use PIR reading as an indicator.
-
+![link](5.png)
 <p align="center">
-  <b> ![link](5.png) </b>
   <b>Figure 5 PIR reading and number of students </b>
 </p>
 
 Secondly, we focus on identifying the pattern of CO2 concentration. As shown in Figure 6, the change in CO2 concentration is tightly related to the change in number of students. At first, when there are 5 students in the test room, even the CO2 concentration fluctuates, but the average during that time period is maintained at 650 ppm. When students start to leave the room one by one, the decrease in CO2 concentration is approximately linearly related to the number of students leave the test room. When all students leave the room, the CO2 concentration fluctuates around 450 ppm. After a while, when 5 students enter the room together, the increase in CO2 concentration is approximately linearly related to the number of students enter the test room. According to this, we assume that the change in CO2 concentration is linearly related to the change in number of students, and decide to use linear regression to identify their relationship. Therefore, we control the number of students enter and leave the test room to discover the pattern of CO2 concentration.
-
+![link](6.png)
 <p align="center">
-  <![link](6.png)>
   <b>Figure 6 CO2 level and number of students </b>
 </p>
 
 After conducting linear regression on data regarding to different number of students entering the test room, we find that when students enter the room, the slope of regression line is approximately proportional related to the number of students, and the coefficient is somewhere between 0.14 and 0.15. As shown in Figure 7, the slope of regression line is 0.4305 when there are 3 students. As shown in Figure 8, the slope of regression line is 0.7118 when there are 5 students.
 
 <p align="center">
-  <![link](7.png)>
+  <image scr="![link](7.png)">
   <b>Figure 7  CO2 level change when 3 students enter the room </b>
 </p>
 
