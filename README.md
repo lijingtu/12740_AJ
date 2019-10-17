@@ -134,50 +134,42 @@ Secondly, we focus on identifying the pattern of CO2 concentration. As shown in 
 </p>
 
 After conducting linear regression on data regarding to different number of students entering the test room, we find that when students enter the room, the slope of regression line is approximately proportional related to the number of students, and the coefficient is somewhere between 0.14 and 0.15. As shown in Figure 7, the slope of regression line is 0.4305 when there are 3 students. As shown in Figure 8, the slope of regression line is 0.7118 when there are 5 students.
-
+![link](7.png)
 <p align="center">
-  <b>![](7.png) </b> 
   <b>Figure 7  CO2 level change when 3 students enter the room </b>
 </p>
-
+![link](8.png)
 <p align="center">
-  <![link](8.png)>
   <b>Figure 8  CO2 level change when 5 students enter the room </b>
 </p>
 Then, we conduct linear regression on data regarding to different number of students leaving the test room. The result is confusing because in the short period of time (about 3 minutes), the slope of regression line is approximately proportional related to the number of students, while in the long period of time, the slope of regression line is somewhere near -0.15.
 
 As shown in Figure 9, 10 and 11, the slope of regression line in short period of time is -0.148 for 1 student, -0.2817 for 2 students and -0.452 for 3 students. The coefficient is somewhere between -0.14 and -0.15, though the confidence level is not high enough to achieve a solid conclusion.
-
+![link](9.png)
 <p align="center">
-  <![link](9.png)>
   <b>Figure 9  Slope in short period of time (1 student) </b>
 </p>
-
+![link](10.png)
 <p align="center">
-  <![link](10.png)>
   <b>Figure 10  Slope in short period of time (2 students) </b>
 </p>
-
+![link](11.png)
 <p align="center">
-  <![link](11.png)>
   <b>Figure 11  Slope in short period of time (3 student) </b>
 </p>
 
 However, for long period of time, even the confidence level is very high, the slope of regression line is close to -0.145 regardless of the number of students. As shown in Figure 12, 13 and 14.
-
+![link](12.png)
 <p align="center">
-  <![link](12.png)>
   <b>Figure 12  Slope in long period of time (1 student) </b>
 </p>
-
+![link](13.png)
 <p align="center">
-  <![link](13.png)>
   <b>Figure 13  Slope in long period of time (2 students) </b>
 </p>
 
-
+![link](14.png)
 <p align="center">
-  <![link](14.png)>
   <b>Figure 14  Slope in long period of time (3 student) </b>
 </p>
 This causes some trouble in estimating the number of students in the test room, as the linear relationship no longer exists when time period is too long, while the CO2 concentration fluctuates and error rate increases when time period is too short. 
@@ -186,9 +178,8 @@ Thirdly, aside from identifying the trend of CO2 concentration, we also need to 
 
 Finally, we get the estimation function: Estimation = Base + Trend. We use 60 data points (3 minutes from now) to do linear regression to find the trend of current CO2 level. As in short period of time, the CO2 fluctuation can be large, in order to reduce error rate, we use the mean of two consecutive categories as boundary to distinguish two categories.
 The code regarding to estimation is shown as in Figure 15. 
-
+![link](15.png)
 <p align="center">
-  <![link](15.png)>
   <b>Figure 15  Estimation logic </b>
 </p>
 
