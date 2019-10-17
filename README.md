@@ -17,7 +17,7 @@ As human activity consumes energy and emit carbon dioxide, when the emission rat
 #### Human Motion ####
 Human consumes energy and generate heat, with radiating waves came at around 12 microns.[1] Since it falls within the range of 0.75 to 1000 micron of infrared radiation, human body could be seen as an infrared radiation source. Therefore, when someone moves around in a space, there should also be an infrared radiation moving in the space. Such phenomenon lays the ground for PIR motion sensor design.
 In our case, when someone enters or exits the room, since it firstly went within sensor detection range and then left this range, motion of this infrared radiation source will be detected and recorded as number of occupants change. Connection between this phenomenon and sensor will be illustrated in “Sensors Used” section.
-![link](1.jpg)
+![](./pic/1.jpg =100x20)
 <p align="center">
   <b>Figure 1 Human radiation in infrared [2] </b>
 </p>
