@@ -107,12 +107,15 @@ When a beam of IR light is emitted by a source, the light does not “disperse�
 The PIR sensor was able to detect any objects passing by with temperature different from its ambient environment, generally, this will lead to noises and errors. Instead of condition signal after collection, a “proactive” measure was adopted to adjust delay time and sensing range before data collection. However, time delay would not be considered in the 
 For PIR signal conditioning, there have been some online resources showing that for some PIR sensors, there will be both DC voltage output and AC output. [3] While the former one will affect the signal desired and perform as noise, and the later one could be too small and should be amplified by some built-in architectural design. However, after calibration and test, we decided that noise and errors are rare in PIR motion sensor output, with binary discrete signals capturing adjacent motion when placing near the door. Thus, no further conditioning nor averaging was applied on PIR motion sensor.
 For CO2 sensor, signal output will be processed with mathematical equation and will read as indoor CO2 concentration in “ppm”. For 1s sampling rate, since CO2 generation is a non-periodic continuous process, there should be no aliasing caused. However, according to Guillaume [4], the usual fluctuation of CO2 concentration variation should not be of concern in occupancy detection. To eliminate the effects from variations, we applied moving average with window length of for the collected CO2 concentration.
-Figure here
 
 ## Experiments and Results ##
 ### Experiments ###
 We used the inner room of CEE Graduate Suite (Wean Hall 3503) as the test field which has a ventilation and a relatively small volume. Then, we put our PIR sensor towards the door. When there is someone coming in or going out the room, the PIR sensor will detect the motion and be triggered. In order to avoid the impact of opening or closing the door on the concentration of CO2, the NDIR CO2 sensor was placed far away from the door with some shelters. 
-figure here
+![link](4.png)
+<p align="center">
+  <b>Figure 4 Experiment Circuit </b>
+</p>
+
 The maximum occupancy was set at five people. Then we used our equipment to detect the relationship between the indoor carbon dioxide changes and the number of people. The number of people was set to increase from one person to five persons with the growing mode is entering one person, two persons or three persons. And the departure mode is the same as the enter mode, until no one is in the room. We also designed a manual counting as the ground truth to check our results.
 We repeated the same experimental steps for three days, more than 10 hours each day, and effectively predicted the number of people in the room based on the data we have obtained.
 ### Data Analysis ###
