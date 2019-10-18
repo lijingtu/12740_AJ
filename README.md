@@ -137,7 +137,7 @@ Secondly, we focus on identifying the pattern of CO2 concentration. As shown in 
 After conducting linear regression on data regarding to different number of students entering the test room, we find that when students enter the room, the slope of regression line is approximately proportional related to the number of students, and the coefficient is somewhere between 0.14 and 0.15. As shown in Figure 6, the slope of regression line is 0.4305 when there are 3 students. As shown in Figure 7, the slope of regression line is 0.7118 when there are 5 students.
 
 <p align="center">
-  <img src="./image/7.png">
+  <img src="./7.png" width="350">
   <b>Figure 6  CO2 level change when 3 students enter the room </b>
 </p>
 
