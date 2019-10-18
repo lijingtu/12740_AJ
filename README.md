@@ -99,7 +99,7 @@ This sensor can be used for HVAC refrigeration equipment, fresh air system, air 
 When a beam of IR light is emitted by a source, the light does not “disperse” by substances between the light and a detector. If there are gases in the path, the light will be absorbed by the gases. As a result, the constant air input induces the constant linear output.
 ![link](3.png)
 <p align="center">
-  <b>Figure 2 The visualization of CO2 sensor signal </b>
+  <b>Figure 2 The visualization of CO<sub>2</sub> sensor signal </b>
 </p>
 
 ### Signal processing and conditioning ###
@@ -120,7 +120,7 @@ We used the inner room of CEE Graduate Suite (Wean Hall 3503) as the test field 
 The maximum occupancy was set at five people. Then we used our equipment to detect the relationship between the indoor carbon dioxide changes and the number of people. The number of people was set to increase from one person to five persons with the growing mode is entering one person, two persons or three persons. And the departure mode is the same as the enter mode, until no one is in the room. We also designed a manual counting as the ground truth to check our results.
 We repeated the same experimental steps for three days, more than 10 hours each day, and effectively predicted the number of people in the room based on the data we have obtained.
 ### Data Analysis ###
-After we collect the data, we process the data before we analysis it. We use the moving average to process the CO<sub>2</sub> concentration data to reduce the influence of noise during the measurement. The size of moving window is 5 data points. For the data from PIR and Ground-truth (actual number of students during the measurement), we don’t need to process them. As PIR generate binary data (0 or 1), there is no need to process it. While Ground-truth is the actual number of students during the measurement, we cannot process it because it is the data we refer to when we try to identify the pattern of CO2 level and PIR reading.
+After we collect the data, we process the data before we analysis it. We use the moving average to process the CO<sub>2</sub> concentration data to reduce the influence of noise during the measurement. The size of moving window is 5 data points. For the data from PIR and Ground-truth (actual number of students during the measurement), we don’t need to process them. As PIR generate binary data (0 or 1), there is no need to process it. While Ground-truth is the actual number of students during the measurement, we cannot process it because it is the data we refer to when we try to identify the pattern of CO<sub>2</sub> level and PIR reading.
 
 Firstly, we focus on identifying the pattern of PIR reading. As shown in Figure 5, PIR reading doesn’t match the ground-truth. Even though the PIR can record the time when people enter and leave the room, but there is also much noise that prevent us from tracking the right number of students in the test room. Besides, the PIR can only detect the motion instead of the direction of movement, it cannot tell us whether students are entering or leaving the room. Thus, we decide not to use PIR reading as an indicator.
 ![link](5.png)
