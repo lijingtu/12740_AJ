@@ -138,7 +138,10 @@ After conducting linear regression on data regarding to different number of stud
 
 <p align="center">
   <img src="./7.png">
-  
+</p>
+
+
+<p align="center">
   <b>Figure 6  CO2 level change when 3 students enter the room </b>
 </p>
 
